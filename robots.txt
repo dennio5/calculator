@@ -1,0 +1,10 @@
+# robots.txt for Streaming Royalties Calculator
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Optional: Crawl-delay (if needed to prevent server overload)
+# Crawl-delay: 1
