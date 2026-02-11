@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Streaming Royalties Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Streaming Royalties Calculator</h1>
+            <p>Calculate your music royalties across streaming platforms</p>
+        </header>
+
+        <main>
+            <section class="about-page">
+                <h2>About This Calculator</h2>
+                
+                <div class="about-content-page">
+                    <p>The Streaming Royalties Calculator is a simple tool that helps artists, producers, and independent creators estimate their potential earnings from music streaming platforms. By entering your stream numbers, you can instantly see how much you might earn across services like Spotify, Apple Music, Amazon Music, and more.</p>
+                    
+                    <p>The calculator uses average industry payout rates to give you a realistic approximation of your royalties. It's designed to be easy to use, transparent, and helpful for understanding your streaming income, comparing platforms, and getting a clearer picture of how your music performs financially.</p>
+                    
+                    <div class="about-note">
+                        <strong>Important Note:</strong> All calculations are estimates based on average industry payout rates and may vary depending on factors like territory, subscription type, and platform agreements.
+                    </div>
+
+                    <h3>Who Is This For?</h3>
+                    <p>This calculator is perfect for:</p>
+                    <ul>
+                        <li><strong>Independent Artists</strong> - Track your streaming income across platforms</li>
+                        <li><strong>Producers & Songwriters</strong> - Estimate royalty earnings from collaborations</li>
+                        <li><strong>Music Managers</strong> - Compare platform performance for your artists</li>
+                        <li><strong>Labels & Distributors</strong> - Forecast revenue from streaming releases</li>
+                    </ul>
+
+                    <h3>How It Works</h3>
+                    <p>Simply enter the number of streams for each platform, adjust your royalty share percentage (if you split earnings with collaborators), and select your preferred currency. The calculator will instantly show you:</p>
+                    <ul>
+                        <li>Gross total earnings across all platforms</li>
+                        <li>Your share after royalty splits</li>
+                        <li>Platform-by-platform breakdown of earnings</li>
+                    </ul>
+
+                    <a href="index.html" class="back-button">← Back to Calculator</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <span class="copyright">© 2026 Streaming Royalties Calculator</span>
+                <div class="footer-links">
+                    <a href="about.html" class="footer-link">About</a>
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <a href="mailto:calculatorstreaming@gmail.com" class="footer-link contact-link">
+                        <svg class="mail-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>🍪 We use cookies to enhance your experience. <a href="privacy-policy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-actions">
+                <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        const COOKIE_NAME = 'cookie_consent';
+        const COOKIE_EXPIRY_DAYS = 365;
+        
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+        }
+        
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        
+        function initCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
+            
+            if (!banner || !acceptBtn || !declineBtn) {
+                return;
+            }
+            
+            const consent = getCookie(COOKIE_NAME);
+            
+            if (!consent) {
+                banner.style.display = 'block';
+            }
+            
+            acceptBtn.addEventListener('click', function() {
+                setCookie(COOKIE_NAME, 'accepted', COOKIE_EXPIRY_DAYS);
+                banner.style.animation = 'slideDown 0.3s ease-out';
+                setTimeout(function() {
+                    banner.style.display = 'none';
+                }, 300);
+            });
+            
+            declineBtn.addEventListener('click', function() {
+                setCookie(COOKIE_NAME, 'declined', COOKIE_EXPIRY_DAYS);
+                banner.style.animation = 'slideDown 0.3s ease-out';
+                setTimeout(function() {
+                    banner.style.display = 'none';
+                }, 300);
+            });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCookieBanner);
+        } else {
+            initCookieBanner();
+        }
+    })();
+    </script>
+</body>
+</html>
